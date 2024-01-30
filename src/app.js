@@ -1,10 +1,8 @@
 const express = require("express");
-
+require('dotenv').config();
 const { auth } = require("express-oauth2-jwt-bearer");
 const errorHandler = require("./middlewares/errorHandler");
 
-
-require('dotenv').config();
 
 // Configuracion Middleware con el Servidor de Autorización 
 const autenticacion = auth({
@@ -21,7 +19,7 @@ app.use(express.json());
 const librosRouter = require("./routes/libros");
 
 //Configuramos el middleware de autenticacion
-app.use("/api/libros", autenticacion,  librosRouter);
+app.use("/api/libros", autenticacion, librosRouter);
 
 app.use(errorHandler);
 
